@@ -16,7 +16,7 @@
   <script src="./pinyin_dict_notone.js"></script>
   <script src="./pinyinUtil.js"></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-  <script src='./data.js'></script>
+  
   <style>
     body {
       margin: 0;
@@ -172,7 +172,7 @@
     map.on('load', function () {
       map.addSource('my-geojson', {
         type: 'geojson',
-        data: name_data
+        data: 'https://github.com/sToney239/2019_ET_MT/blob/main/city.geojson'
       });
 
       name_data.features.forEach(function (name_datai, i) {
@@ -311,7 +311,7 @@
         setAutocomplete: true,
         setFuzzyMatch: true,
         zoom: 5,
-        placeholder: '试试人名搜索?',
+        placeholder: '试试人名搜索? (缩写也行的)',
         mapboxgl: mapboxgl
       })
     );
