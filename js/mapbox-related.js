@@ -28,7 +28,7 @@ function dummy() {
         }
         
         if (classmate.properties.modified_date) {
-          details.innerHTML += `<p style="font-size:1px;color:gray">Last updated: ${classmate.properties.modified_date}</p>`;
+          details.innerHTML += `<p style="font-size:1px;color:gray">最后修改于: ${classmate.properties.modified_date}</p>`;
         }
 
         link.addEventListener('click', function () {
