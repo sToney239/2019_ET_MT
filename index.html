@@ -119,11 +119,11 @@
       }
       base_test += '</tr>' + '<tr>';
       for (i = 0; i < useful_city.length; i++) {
-        base_test += '<td style="color:gray">' + 'Last updated:<br/>' +useful_city[i].properties.modified_date + '</td>';
+        base_test += '<td style="color:gray">' + '最后修改于:<br/>' +useful_city[i].properties.modified_date + '</td>';
       }
       base_test += '</tr>';
       base_test += '</table>';
-
+      
       
       // var viewcenter = (map.getBounds().toArray()[1][0] - map.getBounds().toArray()[0][0])/2 + map.getBounds().toArray()[0][0];
       new mapboxgl.Popup() //{anchor:"center"}
