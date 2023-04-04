@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>19 ET MT</title>
+
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='js/mapbox-gl.js'></script>
+  <script src='js/mapbox-gl-geocoder.min.js'></script>
+  <script src="js/pinyin-pro.js"></script>
+  <script src="js/mapbox-related.js"></script>
+  <script src='./data.js'></script>
+  <link rel='stylesheet'
+    href='css/mapbox-gl-geocoder.css'
+    type='text/css' />
+  <link href='css/mapbox-gl.css' rel='stylesheet' />
+  <link href='css/main-map.css' rel='stylesheet' />
+  
+</head>
+
+<body>
+  <div class='sidebar'>
+    <div class='heading'>
+      <h1 id="total">Our locations</h1>
+    </div>
+    <div id='listings' class='listings'></div>
+  </div>
+  <div id='map'></div>
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvLW5leSIsImEiOiJja25tZG5jNXYwcXBrMnFtcHFjaDlrMjZ4In0.JO5JsnrxhONEUjuIQxTldg';
+    var { pinyin } = pinyinPro;
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [115, 35],
+      zoom: 4
+    });
+
+
+    map.on('load', function () {
+      map.addSource('my-geojson', {
+        type: 'geojson',
+        data: name_data
+      });
+
+      name_data.features.forEach(function (name_datai, i) {
+        name_datai.properties.id = i;
+      });
+      buildLocationList(name_data);
+      map.addLayer({
+        id: 'circle-layer',
+        type: 'circle',
+        source: 'my-geojson',
+        filter: [">", "n",0],
+        paint: {
+          'circle-color': '#ffa661',
+          'circle-stroke-width': 0,
+          'circle-radius': [
+            'interpolate',
+            ['linear'], 
+            ['get', 'n'],
+            1, 15, 
+            10, 45 
+          ],
+        }
+      });
+
+
+      map.addLayer({
+        id: 'circle-city-labels',
+        type: 'symbol',
+        source: 'my-geojson',
+        filter: [">", "n",0],
+        layout: {
+          'text-field': '{city}',
+          'text-size': 14,
+          'text-offset': [0, 0],
+        },
+        paint: {
+          'text-color': '#000'
+        }
+      });
+
+    });
+
+
+
+    map.on('click', 'circle-layer', (e) => {
+      // Copy coordinates array.
+      const coordinates = e.features[0].geometry.coordinates.slice();
+
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      var exact_city = e.features[0].properties.city;
+      var useful_city = name_data.features.filter(function (e) { return e.properties.city == exact_city; });
+
+      var base_test = '<h1 style="text-align:center;margin:0;padding:8px 0 8px 0">' + useful_city[0].properties.city + "<\h1>";      
+      
+      base_test += '<table>';
+      base_test += '<tr>';
+      for (i = 0; i < useful_city.length; i++) {
+        base_test += '<td>' + 
+          '<img src="pics/'+ pinyin(useful_city[i].properties.name, { toneType: 'none', v:"true"}).replace(/\s*/g,"").toLowerCase()+
+          '.jpg" alt="Local Image" width="85" height="85" /> ' + 
+          '</td>';
+      }
+      base_test += '</tr>' + '<tr>';
+
+      for (i = 0; i < useful_city.length; i++) {
+        base_test += '<th>' + useful_city[i].properties.name + '</th>';
+      }
+      base_test += '</tr>' + '<tr>';
+      for (i = 0; i < useful_city.length; i++) {
+        base_test += '<td style="color:gray">' + 'Last updated:<br/>' +useful_city[i].properties.modified_date + '</td>';
+      }
+      base_test += '</tr>';
+      base_test += '</table>';
+
+      
+      // var viewcenter = (map.getBounds().toArray()[1][0] - map.getBounds().toArray()[0][0])/2 + map.getBounds().toArray()[0][0];
+      new mapboxgl.Popup() //{anchor:"center"}
+        .setLngLat(coordinates)  //[viewcenter,map.getCenter().toArray()[1]]
+        .setHTML(base_test)
+        .setMaxWidth("1000px")
+        .addTo(map);
+    });
+
+    map.on('mouseenter', 'circle-layer', () => {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+
+    map.on('mouseleave', 'circle-layer', () => {
+      map.getCanvas().style.cursor = '';
+    });
+    function localgeocoder(query) {
+      var matchingFeatures = [];
+
+
+      name_data.features.forEach(
+        feature => {
+          if (pinyin(feature.properties.name, { toneType: 'none', v:"true"}).replace(/\s*/g,"").toLowerCase().
+            search(pinyin(query, { toneType: 'none', v:"true"}).replace(/\s*/g,"").toLowerCase()) !== -1) {
+            feature['place_name'] = feature.properties.name;
+            feature['center'] = feature.geometry.coordinates;
+            matchingFeatures.push(feature);
+          }
+          
+          if (pinyin(feature.properties.name, { toneType: 'none', pattern: 'first', v:"true"}).replace(/\s*/g,"").toLowerCase().
+            search(pinyin(query, { toneType: 'none', pattern: 'first', v:"true"}).replace(/\s*/g,"").toLowerCase()) !== -1) {
+            feature['place_name'] = feature.properties.name;
+            feature['center'] = feature.geometry.coordinates;
+            matchingFeatures.push(feature);
+          }
+        }
+      )
+
+      return Promise.resolve(matchingFeatures);
+    };
+
+
+    
+    map.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        localGeocoder: dummy,
+        localGeocoderOnly: true,
+        externalGeocoder: localgeocoder,
+        setAutocomplete: true,
+        setFuzzyMatch: true,
+        zoom: 5,
+        placeholder: '试试人名搜索? (缩写也行的)',
+        mapboxgl: mapboxgl
+      })
+    );
+
+    
+  </script>
+</body>
+
+</html>
