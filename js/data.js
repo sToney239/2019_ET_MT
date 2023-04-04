@@ -14,7 +14,7 @@ var name_data = {
 { "type": "Feature", "properties": { "city": "墨尔本", "name": "高凡皓", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 144.96751, -37.817389999999897 ] } },
 { "type": "Feature", "properties": { "city": "广州", "name": "高源", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 113.25, 23.11667 ] } },
 { "type": "Feature", "properties": { "city": "无锡", "name": "郭吉安", "modified_date": "2023-04", "n": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 120.28857, 31.5688700000001 ] } },
-{ "type": "Feature", "properties": { "city": "US Monroe Rochester", "name": "韩明瑜", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ -77.61632, 43.1558 ] } },
+{ "type": "Feature", "properties": { "city": "罗切斯特", "name": "韩明瑜", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ -77.61632, 43.1558 ] } },
 { "type": "Feature", "properties": { "city": "青岛", "name": "何凯琦", "modified_date": "2019-06", "n": 7.0 }, "geometry": { "type": "Point", "coordinates": [ 120.38042, 36.064880000000102 ] } },
 { "type": "Feature", "properties": { "city": null, "name": "黄家铭", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } },
 { "type": "Feature", "properties": { "city": "香港", "name": "黄俊恺", "modified_date": "2019-06", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 114.17612, 22.2768300000001 ] } },
