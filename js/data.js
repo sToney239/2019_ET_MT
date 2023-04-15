@@ -47,7 +47,7 @@ var name_data = {
 { "type": "Feature", "properties": { "city": "奥斯汀", "name": "徐一末", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ -97.74299, 30.26759 ] } },
 { "type": "Feature", "properties": { "city": null, "name": "薛丁溥", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } },
 { "type": "Feature", "properties": { "city": null, "name": "薛人豪", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } },
-{ "type": "Feature", "properties": { "city": "上海", "name": "闫一奇", "modified_date": "2019-06", "n": 3.0 }, "geometry": { "type": "Point", "coordinates": [ 121.45806, 31.22222 ] } },
+{ "type": "Feature", "properties": { "city": "上海", "name": "闫一奇", "modified_date": "2023-04", "n": 3.0 }, "geometry": { "type": "Point", "coordinates": [ 121.45806, 31.22222 ] } },
 { "type": "Feature", "properties": { "city": null, "name": "杨子贤", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } },
 { "type": "Feature", "properties": { "city": "上海", "name": "张辰雨", "modified_date": "2023-04", "n": 3.0 }, "geometry": { "type": "Point", "coordinates": [ 121.45806, 31.22222 ] } },
 { "type": "Feature", "properties": { "city": "成都", "name": "章东徽", "modified_date": "2023-04", "n": 4.0 }, "geometry": { "type": "Point", "coordinates": [ 104.0758, 30.6719000000001 ] } },
