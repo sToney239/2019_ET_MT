@@ -1,4 +1,9 @@
-var name_data = {
+var questionsData = [
+    {id : 1, ques: "diamond?", answ: "zlz"},
+    {id : 2, ques: "慈龟山伯爵?", answ: "qz"},
+    {id : 3, ques: "你大爷?", answ: "lkl"},
+] 
+ var name_data = {
 "type": "FeatureCollection",
 "name": "city",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -33,7 +38,7 @@ var name_data = {
 { "type": "Feature", "properties": { "city": "青岛", "name": "刘祎峻", "modified_date": "2023-04", "n": 7.0 }, "geometry": { "type": "Point", "coordinates": [ 120.38042, 36.064880000000102 ] } },
 { "type": "Feature", "properties": { "city": "青岛", "name": "刘泽辰", "modified_date": "2023-04", "n": 7.0 }, "geometry": { "type": "Point", "coordinates": [ 120.38042, 36.064880000000102 ] } },
 { "type": "Feature", "properties": { "city": "青岛", "name": "吕芳怡", "modified_date": "2023-04", "n": 7.0 }, "geometry": { "type": "Point", "coordinates": [ 120.38042, 36.064880000000102 ] } },
-{ "type": "Feature", "properties": { "city": "青岛", "name": "吕嘉杰", "modified_date": "2019-06", "n": 7.0 }, "geometry": { "type": "Point", "coordinates": [ 120.38042, 36.064880000000102 ] } },
+{ "type": "Feature", "properties": { "city": "青岛", "name": "吕嘉杰", "modified_date": "2023-04", "n": 7.0 }, "geometry": { "type": "Point", "coordinates": [ 120.38042, 36.064880000000102 ] } },
 { "type": "Feature", "properties": { "city": "天津", "name": "马浩元", "modified_date": "2023-04", "n": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 117.17667, 39.142220000000101 ] } },
 { "type": "Feature", "properties": { "city": "哈尔滨", "name": "宁云煜", "modified_date": "2019-06", "n": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 126.5303997, 45.7988273 ] } },
 { "type": "Feature", "properties": { "city": "杭州", "name": "曲政", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 120.16142, 30.29365 ] } },
@@ -53,7 +58,7 @@ var name_data = {
 { "type": "Feature", "properties": { "city": "成都", "name": "章东徽", "modified_date": "2023-04", "n": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 104.0633717, 30.6598628 ] } },
 { "type": "Feature", "properties": { "city": null, "name": "张立宗", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } },
 { "type": "Feature", "properties": { "city": "苏州", "name": "张一鸣", "modified_date": "2019-06", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 120.59538, 31.30408 ] } },
-{ "type": "Feature", "properties": { "city": null, "name": "仲昭阳", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } }
+{ "type": "Feature", "properties": { "city": "西雅图", "name": "仲昭阳", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ -122.32945, 47.60357 ] } }
 ]
 }
 
