@@ -35,18 +35,23 @@
 
   <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvLW5leSIsImEiOiJja25tZG5jNXYwcXBrMnFtcHFjaDlrMjZ4In0.JO5JsnrxhONEUjuIQxTldg';
+    
+    changeName();    
+    
     var { pinyin } = pinyinPro;
 
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [115, 35],
-      interactive: false,
+      //interactive: false,
       zoom: 4
     });
     
     var randQuest = questionsData[Math.floor(Math.random() * questionsData.length)].id;
-    var name = decodeURIComponent(escape(atob(questionsData[randQuest - 1].ques)));
+    // var name = decodeURIComponent(escape(atob(questionsData[randQuest - 1].ques)));
+    var name = atou(questionsData[randQuest - 1].ques);
+    //var name = decodeURIComponent(escape(atob(questionsData[randQuest - 1].ques)));
     const innerHtmlContent = `<div style="min-width: 800px;font-size: large;color : black;" >
             <h4 class="h4Class" align="center"  id="qusetion-name" >${name} </h4> </div>`;
     const divElement = document.createElement('div');
@@ -98,7 +103,8 @@
         return t.id != randQuest;
       })
       randQuest = newQuestionsData[Math.floor(Math.random() * newQuestionsData.length)].id;
-      selectedElement.innerHTML = decodeURIComponent(escape(atob(questionsData.filter((t) => { return t.id == randQuest; })[0].ques)));
+      //selectedElement.innerHTML = decodeURIComponent(escape(atob(questionsData.filter((t) => { return t.id == randQuest; })[0].ques)));
+      selectedElement.innerHTML = atou(questionsData.filter((t) => { return t.id == randQuest; })[0].ques);
       popup.setDOMContent(divElement);
     });
 
@@ -116,6 +122,7 @@
         type: 'geojson',
         data: name_data
       });
+      
 
       name_data.features.forEach(function (name_datai, i) {
         name_datai.properties.id = i;
