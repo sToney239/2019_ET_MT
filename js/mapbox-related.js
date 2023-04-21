@@ -26,7 +26,8 @@ function localgeocoder(query) {
 };
 function validateQuestion() {
   var theAnswer = document.getElementById("question").value;
-  var correctAnswer = decodeURIComponent(escape(atob(questionsData.filter((t) => { return t.id == randQuest; })[0].answ)));
+  //var correctAnswer = decodeURIComponent(escape(atob(questionsData.filter((t) => { return t.id == randQuest; })[0].answ)));
+  var correctAnswer = atou(questionsData.filter((t) => { return t.id == randQuest; })[0].answ);
   var theAnswerPinyin = pinyin(theAnswer, { toneType: 'none', v: "true" }).replace(/\s*/g, "").toLowerCase();
   var correctAnswerPinyin = pinyin(correctAnswer, { toneType: 'none', v: "true" }).replace(/\s*/g, "").toLowerCase();
   //console.log(decodeURI(encodeURI(atob(questionsData[randQuest - 1].ques))));
@@ -82,3 +83,29 @@ function flyToCity(currentFeature) {
     zoom: 5
   });
 }
+function changeName() {
+  for(i in name_data.features){
+    //name_data.features[i].properties.name = decodeURIComponent(escape(name_data.features[i].properties.name);
+    console.log(name_data.features[i].properties.name);
+    name_data.features[i].properties.name = atou(name_data.features[i].properties.name);
+  }
+}
+function atou(b64) {
+    let text = window.atob(b64);
+    let stringAvecPourcentage = "";
+    for (var i = 0; i < text.length; i++) {
+      let caractere = text.charAt(i);
+      if(!/^[\x00-\x7F]*$/.test(caractere)){ 
+        let nombre = caractere.charCodeAt(0); 
+        let hexString = nombre.toString(16); 
+        let speChar = "%" + hexString; 
+        stringAvecPourcentage += speChar;
+      }
+      else{ 
+        stringAvecPourcentage += caractere;
+      }
+    }
+
+    return decodeURIComponent(stringAvecPourcentage); 
+  }
+  
