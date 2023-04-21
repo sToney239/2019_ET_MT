@@ -86,8 +86,9 @@ function flyToCity(currentFeature) {
 function changeName() {
   for(i in name_data.features){
     //name_data.features[i].properties.name = decodeURIComponent(escape(name_data.features[i].properties.name);
-    console.log(name_data.features[i].properties.name);
+    //console.log(name_data.features[i].properties.name);
     name_data.features[i].properties.name = atou(name_data.features[i].properties.name);
+    name_data.features[i].properties.city = atou(name_data.features[i].properties.city);
   }
 }
 function atou(b64) {
