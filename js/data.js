@@ -39,7 +39,7 @@ var name_data = {
 { "type": "Feature", "properties": { "city": "5aSp5rSl", "name": "5a2j5paH6L2p", "modified_date": "2023-04", "n": 2.0 }, "geometry": { "type": "Point", "coordinates": [ 117.17667, 39.14222 ] } },
 { "type": "Feature", "properties": { "city": "5reE5Y2a", "name": "5rGf5biF", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 117.980675, 36.819626 ] } },
 { "type": "Feature", "properties": { "city": "6aaZ5riv", "name": "5rGf5LiA6K+6", "modified_date": "2023-04", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 114.17612, 22.27683 ] } },
-{ "type": "Feature", "properties": { "city": "5qGC5p6X", "name": "5p2O5L+K5bqt", "modified_date": "2019-06", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 110.1750728, 25.238704 ] } },
+{ "type": "Feature", "properties": { "city": "6KW/5a6J", "name": "5p2O5L+K5bqt", "modified_date": "2023-09", "n": 1.0 }, "geometry": { "type": "Point", "coordinates": [ 108.92861, 34.25833 ] } },
 { "type": "Feature", "properties": { "city": "5YyX5Lqs", "name": "5p2O5Z2k6ZyW", "modified_date": "2023-04", "n": 9.0 }, "geometry": { "type": "Point", "coordinates": [ 116.3912757, 39.906217001 ] } },
 { "type": "Feature", "properties": { "city": "TkE=", "name": "5p2O5qKm5paQ", "modified_date": "2019-06", "n": -1.0 }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } },
 { "type": "Feature", "properties": { "city": "5YyX5Lqs", "name": "5p2O5pmf5piK", "modified_date": "2023-04", "n": 9.0 }, "geometry": { "type": "Point", "coordinates": [ 116.3912757, 39.906217001 ] } },
